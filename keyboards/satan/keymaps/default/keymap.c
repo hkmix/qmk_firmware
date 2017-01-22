@@ -9,9 +9,10 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _BL 0
-#define _TL 1
-#define _FL1 2
-#define _FL2 3
+#define _MB 1
+#define _TL 2
+#define _FL1 3
+#define _FL2 4
 
 #define _______ KC_TRNS
 
@@ -45,6 +46,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH, KC_RSFT,MO(_FL1), \
   MO(_FL2),KC_LALT,KC_LGUI,                KC_SPC,                                 KC_RGUI,KC_RALT,MO(_FL2),KC_RCTL),
 
+  /* Keymap _MB: (MacBook Layout) Changes layout to Boot Camp ANSI
+   * ,-----------------------------------------------------------.
+   * |   |   |   |   |   |   |   |   |   |   |   |   |   |Bsp|Bsp|
+   * |-----------------------------------------------------------|
+   * |     |   |   |   |   |   |   |   |   |   |   |   |   |  \  |
+   * |-----------------------------------------------------------|
+   * | Caps  |   |   |   |   |   |   |   |   |   |   |   |       |
+   * |-----------------------------------------------------------|
+   * |        |   |   |   |   |   |   |   |   |   |   |      |   |
+   * |-----------------------------------------------------------|
+   * |Ctrl|    |    |                       |    |    |    |     |
+   * `-----------------------------------------------------------'
+   */
+[_MB] = KEYMAP_HHKB(
+  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,KC_BSPC,KC_BSPC,  \
+  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,KC_BSLS, \
+  KC_CAPS,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______, \
+  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______, \
+  KC_LCTL,_______,_______,                _______,                        _______,_______,_______,_______),
+
   /* Keymap _TL: (Traditional Layout) Changes layout to regular ANSI
    * ,-----------------------------------------------------------.
    * |   |   |   |   |   |   |   |   |   |   |   |   |   |Bsp|Bsp|
@@ -73,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----------------------------------------------------------|
    * |       |V- |V+ |Vm |   |   | * | / |Hme|PgU|Lft|Rgt|       |
    * |-----------------------------------------------------------|
-   * |        |F14|F15|   |   |TL | + | - |End|PgD|Dwn|      |   |
+   * |        |F14|F15|   |MB |TL | + | - |End|PgD|Dwn|      |   |
    * |-----------------------------------------------------------|
    * |    |    |    |                       |    |    |    |     |
    * `-----------------------------------------------------------'
@@ -82,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRV, KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12, KC_INS, KC_DEL,  \
   KC_CAPS,KC_MPRV,KC_MPLY,KC_MNXT,KC_MSTP,_______,_______,_______,KC_PSCR,KC_SLCK,KC_PAUS,KC_UP  ,_______,_______, \
   _______,KC_VOLD,KC_VOLU,KC_MUTE,_______,_______,KC_PAST,KC_PSLS,KC_HOME,KC_PGUP,KC_LEFT,KC_RGHT,_______, \
-  _______,KC_F14 ,KC_F15 ,_______,_______,TG(_TL),KC_PPLS,KC_PMNS,KC_END ,KC_PGDN,KC_DOWN,_______,_______, \
+  _______,KC_F14 ,KC_F15 ,_______,TG(_MB),TG(_TL),KC_PPLS,KC_PMNS,KC_END ,KC_PGDN,KC_DOWN,_______,_______, \
   _______,_______,_______,                _______,                        _______,_______,_______,_______),
 
   /* Keymap _FL2: (Function Layer 2) Basic Vim mappings + Numpad
