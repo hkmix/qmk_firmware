@@ -24,9 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x6060
 #define DEVICE_VER      0x0003
-#define MANUFACTURER    TADA
-#define PRODUCT         TADA68
-#define DESCRIPTION     QMK keyboard firmware for TADA68 with WS2812 support
+#define MANUFACTURER    Originative Co.
+#define PRODUCT         Saber68
+#define DESCRIPTION     QMK keyboard firmware for Saber68
 
 /* key matrix size */
 #define MATRIX_ROWS 5
