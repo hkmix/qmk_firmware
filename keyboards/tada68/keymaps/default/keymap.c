@@ -154,14 +154,14 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
       shift_esc_shift_mask = get_mods()&MODS_CTRL_MASK;
       if (record->event.pressed) {
         if (shift_esc_shift_mask) {
-          add_key(KC_TILD);
+          add_key((uint8_t) KC_TILD);
           send_keyboard_report();
-          del_key(KC_TILD);
+          del_key((uint8_t) KC_TILD);
           send_keyboard_report();
         } else {
-          add_key(KC_ESC);
+          add_key((uint8_t) KC_ESC);
           send_keyboard_report();
-          del_key(KC_ESC);
+          del_key((uint8_t) KC_ESC);
           send_keyboard_report();
         }
       }
