@@ -1,8 +1,9 @@
 # Quantum Mechanical Keyboard Firmware
 
 This personal fork of the QMK project contains only keymaps that have
-modifications made to them. Currently, this is three keyboards:
+modifications made to them. Currently, this is four keyboards:
 
+- [Atreus62](/keyboards/atreus62)
 - [ErgoDox EZ](/keyboards/ergodox)
 - [GH60 Satan](/keyboards/satan)
 - [TADA68/Saber68](/keyboards/tada68)
