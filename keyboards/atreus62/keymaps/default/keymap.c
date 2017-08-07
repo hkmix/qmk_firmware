@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, _______,                   _______, _______, _______, _______, _______, KC_F12,
     _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______,                   _______, _______, KC_PSCR, KC_SLCK, KC_PAUS, _______,
     _______, KC_F14,  KC_F15,  _______, _______, _______,                   _______, KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______,
-    MO(_SL), _______, _______, _______, _______, _______, KC_DEL,  _______, _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _x_x_x_),
+    MO(_SL), _______, _______, _______, _______, KC_DEL,  _______, _______, _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _x_x_x_),
 
   // Keymap _ML: (Mouse Layer) Mouse Controls
   [_ML] = KEYMAP(
