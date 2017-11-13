@@ -56,7 +56,8 @@ MSG_CLEANING = Cleaning project:
 MSG_CREATING_LIBRARY = Creating library:
 MSG_SUBMODULE_DIRTY = $(WARN_COLOR)WARNING:$(NO_COLOR)\n \
 	Some git sub-modules are out of date or modified, please consider runnning:$(BOLD)\n\
-        make git-submodule\n\
+	git submodule sync --recursive\n\
+	git submodule update --init --recursive$(NO_COLOR)\n\n\
 	You can ignore this warning if you are not compiling any ChibiOS keyboards,\n\
 	or if you have modified the ChibiOS libraries yourself. \n\n
 MSG_NO_CMP = $(ERROR_COLOR)Error:$(NO_COLOR)$(BOLD) cmp command not found, please install diffutils\n$(NO_COLOR)

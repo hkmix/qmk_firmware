@@ -27,7 +27,6 @@
 #include "sleep_led.h"
 #include "led.h"
 #endif
-#include "wait.h"
 
 #ifdef NKRO_ENABLE
   #include "keycode_config.h"
@@ -39,14 +38,6 @@
  *       Global interface variables and declarations
  * ---------------------------------------------------------
  */
-
-#ifndef usb_lld_connect_bus
-  #define usb_lld_connect_bus(usbp)
-#endif
-
-#ifndef usb_lld_disconnect_bus
-  #define usb_lld_disconnect_bus(usbp)
-#endif
 
 uint8_t keyboard_idle __attribute__((aligned(2))) = 0;
 uint8_t keyboard_protocol __attribute__((aligned(2))) = 1;
@@ -146,7 +137,7 @@ static const uint8_t keyboard_hid_report_desc_data[] = {
   0x95, KBD_REPORT_KEYS,          //   Report Count (),
   0x75, 0x08,                //   Report Size (8),
   0x15, 0x00,                //   Logical Minimum (0),
-  0x26, 0xFF, 0x00,          //   Logical Maximum(255),
+  0x25, 0xFF,                //   Logical Maximum(255),
   0x05, 0x07,                //   Usage Page (Key Codes),
   0x19, 0x00,                //   Usage Minimum (0),
   0x29, 0xFF,                //   Usage Maximum (255),
@@ -1026,7 +1017,7 @@ void init_usb_driver(USBDriver *usbp) {
    * after a reset.
    */
   usbDisconnectBus(usbp);
-  wait_ms(1500);
+  chThdSleepMilliseconds(1500);
   usbStart(usbp, &usbcfg);
   usbConnectBus(usbp);
 
@@ -1046,16 +1037,16 @@ void send_remote_wakeup(USBDriver *usbp) {
 #if defined(K20x) || defined(KL2x)
 #if KINETIS_USB_USE_USB0
   USB0->CTL |= USBx_CTL_RESUME;
-  wait_ms(15);
+  chThdSleepMilliseconds(15);
   USB0->CTL &= ~USBx_CTL_RESUME;
 #endif /* KINETIS_USB_USE_USB0 */
-#elif defined(STM32F0XX) || defined(STM32F1XX) || defined(STM32F3XX) /* End K20x || KL2x */
+#elif defined(STM32F0XX) || defined(STM32F1XX) /* K20x || KL2x */
   STM32_USB->CNTR |= CNTR_RESUME;
-  wait_ms(15);
+  chThdSleepMilliseconds(15);
   STM32_USB->CNTR &= ~CNTR_RESUME;
-#else /* End STM32F0XX || STM32F1XX || STM32F3XX */
+#else /* STM32F0XX || STM32F1XX */
 #warning Sending remote wakeup packet not implemented for your platform.
-#endif
+#endif /* K20x || KL2x */
 }
 
 /* ---------------------------------------------------------

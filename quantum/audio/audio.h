@@ -18,15 +18,12 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#if defined(__AVR__)
-  #include <avr/io.h>
-#endif
-#include "wait.h"
+#include <avr/io.h>
+#include <util/delay.h>
 #include "musical_notes.h"
 #include "song_list.h"
 #include "voices.h"
 #include "quantum.h"
-#include <math.h>
 
 // Largely untested PWM audio mode (doesn't sound as good)
 // #define PWM_AUDIO

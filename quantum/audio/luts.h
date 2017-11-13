@@ -14,14 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if defined(__AVR__)
-    #include <avr/io.h>
-    #include <avr/interrupt.h>
-    #include <avr/pgmspace.h>
-#else
-    #include "ch.h"
-    #include "hal.h"
-#endif
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/pgmspace.h>
 
 #ifndef LUTS_H
 #define LUTS_H

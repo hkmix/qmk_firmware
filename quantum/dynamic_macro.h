@@ -50,7 +50,7 @@ void dynamic_macro_led_blink(void)
 {
 #ifdef BACKLIGHT_ENABLE
     backlight_toggle();
-    wait_ms(100);
+    _delay_ms(100);
     backlight_toggle();
 #endif
 }

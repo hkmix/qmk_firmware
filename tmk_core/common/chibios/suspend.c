@@ -10,11 +10,10 @@
 #include "host.h"
 #include "backlight.h"
 #include "suspend.h"
-#include "wait.h"
 
 void suspend_idle(uint8_t time) {
 	// TODO: this is not used anywhere - what units is 'time' in?
-	wait_ms(time);
+	chThdSleepMilliseconds(time);
 }
 
 void suspend_power_down(void) {
@@ -25,7 +24,7 @@ void suspend_power_down(void) {
 	// on AVR, this enables the watchdog for 15ms (max), and goes to
 	// SLEEP_MODE_PWR_DOWN
 
-	wait_ms(17);
+	chThdSleepMilliseconds(17);
 }
 
 __attribute__ ((weak)) void matrix_power_up(void) {}

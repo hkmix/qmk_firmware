@@ -23,11 +23,6 @@ ifdef EXTRAKEY_ENABLE
     SRC += $(PJRC_DIR)/usb_extra.c
 endif
 
-
-ifdef POINTING_DEVICE_ENABLE
-    SRC += $(PJRC_DIR)/usb_mouse.c
-endif
-
 # Search Path
 VPATH += $(TMK_DIR)/$(PJRC_DIR)
 

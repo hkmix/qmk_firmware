@@ -22,28 +22,19 @@
 	#define RGBLIGHT_MODES 1
 #endif
 
-#ifndef RGBLIGHT_EFFECT_BREATHE_CENTER
-#define RGBLIGHT_EFFECT_BREATHE_CENTER 1.85  // 1-2.7
-#endif
-
-#ifndef RGBLIGHT_EFFECT_BREATHE_MAX
-#define RGBLIGHT_EFFECT_BREATHE_MAX 255   // 0-255
-#endif
-
 #ifndef RGBLIGHT_EFFECT_SNAKE_LENGTH
-#define RGBLIGHT_EFFECT_SNAKE_LENGTH 4
+#define RGBLIGHT_EFFECT_SNAKE_LENGTH 7
 #endif
 
 #ifndef RGBLIGHT_EFFECT_KNIGHT_LENGTH
-#define RGBLIGHT_EFFECT_KNIGHT_LENGTH 3
+#define RGBLIGHT_EFFECT_KNIGHT_LENGTH 7
 #endif
-
 #ifndef RGBLIGHT_EFFECT_KNIGHT_OFFSET
-#define RGBLIGHT_EFFECT_KNIGHT_OFFSET 0
+#define RGBLIGHT_EFFECT_KNIGHT_OFFSET 9
 #endif
 
-#ifndef RGBLIGHT_EFFECT_KNIGHT_LED_NUM
-#define RGBLIGHT_EFFECT_KNIGHT_LED_NUM RGBLED_NUM
+#ifndef RGBLIGHT_EFFECT_DUALKNIGHT_LENGTH
+#define RGBLIGHT_EFFECT_DUALKNIGHT_LENGTH 4
 #endif
 
 #ifndef RGBLIGHT_EFFECT_CHRISTMAS_INTERVAL
@@ -70,10 +61,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "eeconfig.h"
-#ifndef RGBLIGHT_CUSTOM_DRIVER
 #include "ws2812.h"
-#endif
-#include "rgblight_types.h"
 
 extern LED_TYPE led[RGBLED_NUM];
 
@@ -101,7 +89,6 @@ void rgblight_toggle(void);
 void rgblight_enable(void);
 void rgblight_step(void);
 void rgblight_step_reverse(void);
-uint32_t rgblight_get_mode(void);
 void rgblight_mode(uint8_t mode);
 void rgblight_set(void);
 void rgblight_update_dword(uint32_t dword);
