@@ -12,6 +12,11 @@
 
 #define G(kc) LGUI(KC_##kc)
 
+enum macro_keycodes {
+  PLACEHOLDER = SAFE_RANGE,
+  WHOAMI,
+};
+
 /*
   // Keymap _XL: (X Layer) Some Layer
   [_XL] = KEYMAP(
@@ -60,10 +65,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Keymap _SL: (System Layer) System commands
   [_SL] = KEYMAP(
     xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,                   xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,
-    xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, RESET,   xxxxxxx,                   xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,
+    xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, RESET,   xxxxxxx,                   xxxxxxx, xxxxxxx, xxxxxxx, WHOAMI,  xxxxxxx, xxxxxxx,
     xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,                   xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,
     xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,                   xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,
-    xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx),
+    _x_x_x_, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, _x_x_x_),
 };
 
 const uint16_t PROGMEM fn_actions[] = {};
@@ -83,3 +88,17 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
   }
   return MACRO_NONE;
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+  switch (keycode) {
+  case WHOAMI:
+    if (record->event.pressed) {
+      SEND_STRING("Property of Jack Zhou (@hkmix)");
+    }
+
+    return false;
+  }
+
+  return true;
+}
