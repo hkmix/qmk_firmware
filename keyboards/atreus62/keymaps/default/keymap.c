@@ -7,8 +7,9 @@
 #define _BL 0
 #define _FL 1
 #define _ML 2
-#define _NL 3
-#define _SL 4
+#define _AL 3
+#define _NL 4
+#define _SL 5
 
 #define G(kc) LGUI(KC_##kc)
 
@@ -41,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Keymap _FL: (Function Layer) Default Function Layer
   [_FL] = KEYMAP(
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, _______,                   _______, _______, _______, _______, _______, KC_F12,
+    KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, TG(_AL),                   _______, _______, _______, _______, TG(_ML), KC_F12,
     _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______,                   _______, _______, KC_PSCR, KC_SLCK, KC_PAUS, _______,
     _______, KC_F14,  KC_F15,  _______, _______, _______,                   _______, KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______,
     MO(_SL), _______, _______, _______, _______, KC_DEL,  _______, _______, _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _x_x_x_),
@@ -51,8 +52,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                   KC_WH_U, KC_WH_L, KC_MS_U, KC_WH_R, _______, _______,
     _______, _______, _______, _______, _______, _______,                   KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,
-    _______, _______, _______, _______, G(LBRC), G(RBRC),                   _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, KC_BTN4, KC_BTN5, _x_x_x_, KC_BTN2, KC_BTN1, KC_BTN3, _______, _______, _______, _______),
+    _______, _______, _______, _______, G(LBRC), G(RBRC),                   _______, _______, _______, KC_UP,   _______, _______,
+    _______, _______, _______, _______, KC_BTN4, KC_BTN5, _x_x_x_, KC_BTN2, KC_BTN1, KC_BTN3, KC_LEFT, KC_DOWN, KC_RGHT, _______),
+
+  // Keymap _AL: (Arrow Layer) Mouse Controls
+  [_AL] = KEYMAP(
+    _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,                   _______, _______, _______, KC_UP,   _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _x_x_x_),
 
   // Keymap _NL: (Numpad Layer) Number Pad Layer
   [_NL] = KEYMAP(
