@@ -190,4 +190,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_MAX_SPEED   4
 #define MOUSEKEY_WHEEL_DELAY 10
 
+#define PERMISSIVE_HOLD
+
 #endif
